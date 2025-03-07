@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "Excluir Equipamento";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@Html.Partial("_ToastMessages")
+
+<div class="container">
+    <h1>Excluir Equipamento</h1>
+    <form id="deleteForm" method="post" action="@Url.Action("DeleteConfirmed", "Equipment")">
+        <div class="mb-3">
+            <label for="id" class="form-label">ID do Equipamento a ser Excluído:</label>
+            <div class="col-6 mx-auto">
+                <input type="number" class="form-control text-center" id="id" name="id"
+                       value="@ViewBag.Id"
+                @if (ViewBag.ReadOnly == true)
+                {
+                    <text>readonly</text>
+                } />
+            </div>
+        </div>
+        <button type="submit" class="btn btn-danger">Excluir</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById("deleteForm").addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        Swal.fire({
+            title: "Tem certeza?",
+            text: "Esta ação não pode ser desfeita!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#d33",
+            cancelButtonColor: "#3085d6",
+            confirmButtonText: "Sim, excluir!",
+            cancelButtonText: "Cancelar"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                event.target.submit();
+            }
+        });
+    });
+</script>

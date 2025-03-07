@@ -1,0 +1,206 @@
+﻿@{
+    ViewData["Title"] = "Editar Equipamento";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.Partial("_ToastMessages")
+
+<div class="container">
+    <h1>Editar Equipamento</h1>
+
+    <form method="get" action="@Url.Action("Edit", "Equipment")">
+        <div class="mb-3">
+            <label for="id" class="form-label">Digite o ID do Equipamento:</label>
+            <div class="col-6 mx-auto">
+                <input type="number" class="form-control text-center" id="id" name="id" required>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Buscar</button>
+    </form>
+
+    @if (Model != null)
+    {
+        <form method="post" action="@Url.Action("Edit", "Equipment")">
+            <input type="hidden" name="Id" value="@Model.Id" />
+
+            <div class="row mt-3">
+                <div class="col-md-6">
+                    <label for="installation" class="form-label">Instalação:</label>
+                    <input type="text" class="form-control text-center" id="installation" name="Installation" value="@Model.Installation" maxlength="10" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="batch" class="form-label">Lote:</label>
+                    <input type="number" class="form-control text-center" id="batch" name="Batch" value="@Model?.Batch" min="1" max="10" required>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-md-6">
+                    <label for="operator" class="form-label">Operadora:</label>
+                    <select class="form-control text-center" id="operator" name="Operator" required>
+                        <option value="">Selecione</option>
+                        <option value="Claro" @(Model.Operator == "Claro" ? "selected" : "")>Claro</option>
+                        <option value="Tim" @(Model.Operator == "Tim" ? "selected" : "")>Tim</option>
+                        <option value="Vivo" @(Model.Operator == "Vivo" ? "selected" : "")>Vivo</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="manufacturer" class="form-label">Fabricante:</label>
+                    <input type="text" class="form-control text-center" id="manufacturer" name="Manufacturer" value="@Model.Manufacturer" maxlength="15" required>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-md-6">
+                    <label for="model" class="form-label">Modelo:</label>
+                    <input type="number" class="form-control text-center" id="model" name="Model" value="@Model.Model"
+                           oninput="this.value = this.value.slice(0, 6)" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="version" class="form-label">Versão:</label>
+                    <input type="number" class="form-control text-center" id="version" name="Version" value="@Model.Version"
+                           oninput="this.value = this.value.slice(0, 6)" required>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-warning mt-4">Editar</button>
+        </form>
+    }
+</div>
+
+
+
+
+@* @{
+    ViewData["Title"] = "Editar Equipamento";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h1>Editar Equipamento</h1>
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger mt-3">
+            @TempData["ErrorMessage"]
+        </div>
+    }
+
+
+    <form method="get" action="@Url.Action("Edit", "Equipment")">
+        <div class="mb-3">
+            <label for="id" class="form-label">Digite o ID do Equipamento:</label>
+            <div class="col-6 mx-auto">
+                <input type="number" class="form-control text-center" id="id" name="id" required>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Buscar</button>
+    </form>
+
+    @if (Model != null)
+    {
+        <form method="post" action="@Url.Action("Edit", "Equipment")">
+            <input type="hidden" name="Id" value="@Model.Id" />
+            <div class="row mt-3">
+                <div class="col-md-6">
+                    <label for="installation" class="form-label">Instalação:</label>
+                    <input type="text" class="form-control text-center" id="installation" name="Installation" value="@Model.Installation" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="batch" class="form-label">Lote:</label>
+                    <input type="number" class="form-control text-center" id="batch" name="Batch" value="@Model.Batch" required>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-md-6">
+                    <label for="operator" class="form-label">Operador:</label>
+                    <input type="text" class="form-control text-center" id="operator" name="Operator" value="@Model.Operator" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="manufacturer" class="form-label">Fabricante:</label>
+                    <input type="text" class="form-control text-center" id="manufacturer" name="Manufacturer" value="@Model.Manufacturer" required>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-md-6">
+                    <label for="model" class="form-label">Modelo:</label>
+                    <input type="number" class="form-control text-center" id="model" name="Model" value="@Model.Model" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="version" class="form-label">Versão:</label>
+                    <input type="number" class="form-control text-center" id="version" name="Version" value="@Model.Version" required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-warning mt-4">Editar</button>
+        </form>
+        }
+</div> *@
+
+
+
+@* @{
+    ViewData["Title"] = "Editar Equipamento";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h1>Editar Equipamento</h1>
+
+    @if (Model == null)
+    {
+        <form method="get" action="@Url.Action("Edit", "Equipment")">
+            <div class="mb-3">
+                <label for="id" class="form-label">Digite o ID do Equipamento:</label>
+                <input type="number" class="form-control" id="id" name="id" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Buscar</button>
+        </form>
+    }
+    else
+    {
+        <form method="post" action="@Url.Action("Edit", "Equipment")">
+            <div class="mb-3">
+                <label for="id" class="form-label">ID:</label>
+                <input type="number" class="form-control" id="id" name="Id" value="@Model.Id" readonly required>
+            </div>
+            <div class="mb-3">
+                <label for="name" class="form-label">Nome:</label>
+                <input type="text" class="form-control" id="name" name="Name" value="@Model.Name" required>
+            </div>
+            <div class="mb-3">
+                <label for="installation" class="form-label">Instalação:</label>
+                <input type="text" class="form-control" id="installation" name="Installation" value="@Model.Installation" required>
+            </div>
+            <div class="mb-3">
+                <label for="batch" class="form-label">Lote:</label>
+                <input type="text" class="form-control" id="batch" name="Batch" value="@Model.Batch" required>
+            </div>
+            <div class="mb-3">
+                <label for="operator" class="form-label">Operador:</label>
+                <input type="text" class="form-control" id="operator" name="Operator" value="@Model.Operator" required>
+            </div>
+            <div class="mb-3">
+                <label for="manufacturer" class="form-label">Fabricante:</label>
+                <input type="text" class="form-control" id="manufacturer" name="Manufacturer" value="@Model.Manufacturer" required>
+            </div>
+            <div class="mb-3">
+                <label for="model" class="form-label">Modelo:</label>
+                <input type="text" class="form-control" id="model" name="Model" value="@Model.Model" required>
+            </div>
+            <div class="mb-3">
+                <label for="version" class="form-label">Versão:</label>
+                <input type="text" class="form-control" id="version" name="Version" value="@Model.Version" required>
+            </div>
+            <button type="submit" class="btn btn-warning">Editar</button>
+        </form>
+    }
+</div>
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger mt-3">
+        @TempData["ErrorMessage"]
+    </div>
+} *@

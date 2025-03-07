@@ -1,0 +1,24 @@
+﻿@Model EquipmentManagementAsp.Models.Equipment
+
+@{
+    ViewData["Title"] = "Detalhes do Equipamento";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-center">Detalhes do Equipamento</h2>
+
+<div class="card shadow-lg">
+    <div class="card-header bg-dark text-white">
+        <h5 class="card-title">@Model.Name</h5>
+    </div>
+    <div class="card-body">
+        <p><strong>ID:</strong> @Model.Id</p>
+        <p><strong>Instalação:</strong> @Model.Installation</p>
+        <p><strong>Lote:</strong> @Model.Batch</p>
+        <p><strong>Operador:</strong> @Model.Operator</p>
+        <p><strong>Fabricante:</strong> @Model.Manufacturer</p>
+        <p><strong>Modelo:</strong> @Model.Model</p>
+        <p><strong>Versão:</strong> @Model.Version</p>
+        <a href="@Url.Action("Index", "Equipment")" class="btn btn-primary">Voltar</a>
+    </div>
+</div>

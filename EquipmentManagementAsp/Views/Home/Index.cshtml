@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Página Inicial";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container" style="margin-top: 25vh;">
+    <div class="btn-group d-flex mb-3" role="group">
+        <a href="@Url.Action("GetAll", "Equipment")" class="btn btn-primary">Listar Equipamentos</a>
+        <a href="@Url.Action("GetById", "Equipment")" class="btn btn-secondary">Buscar por ID</a>
+        <a href="@Url.Action("Create", "Equipment")" class="btn btn-success">Adicionar</a>
+        <a href="@Url.Action("Edit", "Equipment")" class="btn btn-warning">Editar</a>
+        <a href="@Url.Action("Delete", "Equipment")" class="btn btn-danger">Excluir</a>
+        <a href="@Url.Action("ImportEquipments", "Equipment")" class="btn btn-info">Importar CSV</a>
+    </div>
+</div>

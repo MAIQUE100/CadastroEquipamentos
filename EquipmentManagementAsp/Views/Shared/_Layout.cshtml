@@ -1,0 +1,144 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Sistema de Gerenciamento</title>
+
+    <!-- Fontes e Estilos -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #e3f2fd;
+            /* background-color: rgba(248, 249, 250, 0.8); */
+            /* background-image: url('/images/background.png'); */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+            height: 100vh; /* Garantir que o body tenha 100% da altura da tela */
+            margin: 0;
+        }
+
+        .background-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.0); /* Fundo semitransparente */
+            z-index: -1; /* Coloca atrás do conteúdo */
+        }
+
+        header {
+            background-color: #007bff;
+        }
+
+        .navbar-nav .nav-link {
+            color: white !important;
+            font-size: 1.2rem; /* Reduz o tamanho da fonte dos links */
+            padding: 0.4rem 0.7rem;
+        }
+
+        .navbar {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 0.2rem 1rem; /* Reduz o espaço interno na parte superior e inferior */
+            min-height: 50px;
+        }
+
+        .navbar-brand {
+            font-size: 1.3rem; /* Reduz o tamanho do texto do logo */
+            padding: 0; /* Remove espaços extras */
+        }
+
+        .container {
+            padding-top: 20px;
+            text-align: center;
+            flex: 1;
+        }
+
+        footer {
+            background-color: #343a40;
+            color: #ffffff;
+            padding: 10px 0;
+            padding-bottom: 10px;
+            margin-top: auto;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <div class="background-overlay"></div>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand text-white" href="@Url.Action("Index", "Home")">Sistema de Gerenciamento de Equipamentos</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav"
+                        aria-expanded="false" aria-label="Alternar navegação">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between" id="navbarNav">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Index", "Home")"><i class="fas fa-home fa-sm"></i> Início</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("GetAll", "Equipment")"><i class="fas fa-list fa-sm"></i> Listar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("GetById", "Equipment")"><i class="fas fa-search fa-sm"></i> Buscar ID</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Create", "Equipment")"><i class="fas fa-plus fa-sm"></i> Adicionar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Edit", "Equipment")"><i class="fas fa-edit fa-sm"></i> Editar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("Delete", "Equipment")"><i class="fas fa-trash fa-sm"></i> Excluir</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("ImportEquipments", "Equipment")"><i class="fas fa-upload fa-sm"></i> Importar CSV</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer>
+        <div class="container text-start">
+            &copy; 2025 - <a href="@Url.Action("Index", "Home")">Sistema de Gerenciamento de Equipamentos</a>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>
+
+
+
+
+
+

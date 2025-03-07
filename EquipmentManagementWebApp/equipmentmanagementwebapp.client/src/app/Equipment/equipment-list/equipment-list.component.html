@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+  <div class="equipment-list">
+    <h2>Lista de Equipamentos</h2>
+
+    <p *ngIf="loading">Carregando...</p>
+    <p *ngIf="errorMessage">{{ errorMessage }}</p>
+
+    <table *ngIf="!loading && equipmentList.length">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Instalação</th>
+          <th>Lote</th>
+          <th>Operador</th>
+          <th>Fabricante</th>
+          <th>Modelo</th>
+          <th>Versão</th>
+          <th>Data de Compra</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let equipment of equipmentList">
+          <td>{{ equipment.id }}</td>
+          <td>{{ equipment.name }}</td>
+          <td>{{ equipment.installation }}</td>
+          <td>{{ equipment.batch }}</td>
+          <td>{{ equipment.operator }}</td>
+          <td>{{ equipment.manufacturer }}</td>
+          <td>{{ equipment.model }}</td>
+          <td>{{ equipment.version }}</td>
+          <td>{{ equipment.purchaseDate | date:'dd/MM/yyyy' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

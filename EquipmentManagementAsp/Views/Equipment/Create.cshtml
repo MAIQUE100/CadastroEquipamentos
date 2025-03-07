@@ -1,0 +1,123 @@
+﻿@model EquipmentManagementAsp.Models.Equipment
+
+@{
+    ViewData["Title"] = "Adicionar Equipamento";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Html.Partial("_ToastMessages")
+
+<style>
+    .btn-success:hover {
+        background-color: #218838; 
+        border-color: #1e7e34;
+    }
+</style>
+
+<div class="container">
+    <h1 class="mt-4 mb-4">Adicionar Novo Equipamento</h1>
+
+    <form method="post" action="@Url.Action("Create", "Equipment")">
+        <div class="row mt-3">
+            <div class="col-md-6">
+                <label for="installation" class="form-label">Instalação:</label>
+                <input type="text" class="form-control text-center" id="installation" name="Installation" maxlength="10" required>
+            </div>
+            <div class="col-md-6">
+                <label for="batch" class="form-label">Lote:</label>
+                <input type="number" class="form-control text-center" id="batch" name="Batch" min="1" max="10" required>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-md-6">
+                <label for="operator" class="form-label">Operadora:</label>
+                <select class="form-control text-center" id="operator" name="Operator" required>
+                    <option value="">Selecione</option>
+                    <option value="Claro">Claro</option>
+                    <option value="Tim">Tim</option>
+                    <option value="Vivo">Vivo</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <label for="manufacturer" class="form-label">Fabricante:</label>
+                <input type="text" class="form-control text-center" id="manufacturer" name="Manufacturer" maxlength="15" required>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-md-6">
+                <label for="model" class="form-label">Modelo:</label>
+                <input type="number" class="form-control text-center" id="model" name="Model" required>
+            </div>
+            <div class="col-md-6">
+                <label for="version" class="form-label">Versão:</label>
+                <input type="number" class="form-control text-center" id="version" name="Version" required>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-success mt-4">Adicionar</button>
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+@* @model EquipmentManagementAsp.Models.Equipment
+
+@{
+    ViewData["Title"] = "Adicionar Equipamento";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .btn-success:hover {
+        background-color: #218838; /* verde mais escuro ao passar o mouse */
+        border-color: #1e7e34; /* borda mais escura ao passar o mouse */
+    }
+</style>
+
+<div class="container">
+    <h1 class="mt-4 mb-4">Adicionar Novo Equipamento</h1>
+
+    <form method="post" action="@Url.Action("Create", "Equipment")">
+        <div class="row mt-3">
+            <div class="col-md-6">
+                <label for="installation" class="form-label">Instalação:</label>
+                <input type="text" class="form-control text-center" id="installation" name="Installation" required>
+            </div>
+            <div class="col-md-6">
+                <label for="batch" class="form-label">Lote:</label>
+                <input type="number" class="form-control text-center" id="batch" name="Batch" required>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-md-6">
+                <label for="operator" class="form-label">Operador:</label>
+                <input type="text" class="form-control text-center" id="operator" name="Operator" required>
+            </div>
+            <div class="col-md-6">
+                <label for="manufacturer" class="form-label">Fabricante:</label>
+                <input type="text" class="form-control text-center" id="manufacturer" name="Manufacturer" required>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-md-6">
+                <label for="model" class="form-label">Modelo:</label>
+                <input type="number" class="form-control text-center" id="model" name="Model" required>
+            </div>
+            <div class="col-md-6">
+                <label for="version" class="form-label">Versão:</label>
+                <input type="number" class="form-control text-center" id="version" name="Version" required>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-success mt-4">Adicionar</button>
+    </form>
+</div> *@

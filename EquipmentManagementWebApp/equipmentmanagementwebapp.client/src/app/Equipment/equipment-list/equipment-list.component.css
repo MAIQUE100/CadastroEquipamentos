@@ -1,0 +1,35 @@
+.equipment-list {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.equipment-table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+}
+
+  .equipment-table th, .equipment-table td {
+    padding: 12px;
+    text-align: center;
+  }
+
+  .equipment-table th {
+    background-color: #f4f4f4;
+    color: #333;
+  }
+
+  .equipment-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  .equipment-table td {
+    border-bottom: 1px solid #ddd;
+  }

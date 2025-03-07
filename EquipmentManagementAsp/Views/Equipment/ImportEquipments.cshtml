@@ -1,0 +1,98 @@
+﻿@model List<EquipmentManagementAsp.Models.Equipment>
+@using System.Linq
+
+@{
+    ViewData["Title"] = "Importar CSV";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h1>Importar Equipamentos via CSV</h1>
+
+    <form method="post" enctype="multipart/form-data" action="@Url.Action("ImportCSV", "Equipment")">
+        <div class="mb-3">
+            <label for="file" class="form-label">Selecione o arquivo CSV:</label>
+            <input type="file" class="form-control" id="file" name="file" accept=".csv" required>
+        </div>
+        <button type="submit" class="btn btn-info">Visualisar</button>
+    </form>
+
+    <!-- Mensagens de sucesso -->
+    @if (ViewBag.SuccessMessage != null)
+    {
+        <div class="alert alert-success">@ViewBag.SuccessMessage</div>
+    }
+    @if (ViewBag.Message != null)
+    {
+        <div class="alert alert-warning">@ViewBag.Message</div>
+    }
+
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div class="alert alert-danger">
+            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+            {
+                <p>@error.ErrorMessage</p>
+            }
+        </div>
+    }
+
+    @if (Model != null && Model.Any())
+    {
+        <h2 class="mt-4">Equipamentos a serem Importados</h2>
+        <form method="post" action="@Url.Action("ImportEquipments", "Equipment")">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Instalação</th>
+                        <th>Lote</th>
+                        <th>Operador</th>
+                        <th>Fabricante</th>
+                        <th>Modelo</th>
+                        <th>Versão</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                        <tr>
+                            <td>
+                                @Model[i].Installation
+                                <input type="hidden" name="equipments[@i].Installation" value="@Model[i].Installation" />
+                            </td>
+                            <td>
+                                @Model[i].Batch
+                                <input type="hidden" name="equipments[@i].Batch" value="@Model[i].Batch" />
+                            </td>
+                            <td>
+                                @Model[i].Operator
+                                <input type="hidden" name="equipments[@i].Operator" value="@Model[i].Operator" />
+                            </td>
+                            <td>
+                                @Model[i].Manufacturer
+                                <input type="hidden" name="equipments[@i].Manufacturer" value="@Model[i].Manufacturer" />
+                            </td>
+                            <td>
+                                @Model[i].Model
+                                <input type="hidden" name="equipments[@i].Model" value="@Model[i].Model" />
+                            </td>
+                            <td>
+                                @Model[i].Version
+                                <input type="hidden" name="equipments[@i].Version" value="@Model[i].Version" />
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <button type="submit" class="btn btn-success">Importar Equipamentos</button>
+        </form>
+    }
+</div>
+
+
+
+
+
+
+

@@ -1,0 +1,50 @@
+﻿@model List<EquipmentManagementAsp.Models.Equipment>
+@using System.Linq
+
+@{
+    ViewData["Title"] = "Buscar Todos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h1>Todos os Equipamentos</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Instalação</th>
+                <th>Lote</th>
+                <th>Operador</th>
+                <th>Fabricante</th>
+                <th>Modelo</th>
+                <th>Versão</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                @foreach (var equipment in Model)
+                {
+                    <tr>
+                        <td>@equipment.Installation</td>
+                        <td>@equipment.Batch</td>
+                        <td>@equipment.Operator</td>
+                        <td>@equipment.Manufacturer</td>
+                        <td>@equipment.Model</td>
+                        <td>@equipment.Version</td>
+                        <td>
+                            <a href="@Url.Action("Edit", "Equipment", new { id = equipment.Id })" class="btn btn-warning">Editar</a>
+                            <a href="@Url.Action("Delete", "Equipment", new { id = equipment.Id })" class="btn btn-danger">Excluir</a>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="9">Nenhum equipamento encontrado</td>
+                </tr>
+            } 
+        </tbody>
+    </table>
+</div>

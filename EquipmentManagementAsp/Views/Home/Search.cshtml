@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Buscar Equipamento";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h1>Buscar Equipamento por ID</h1>
+
+    <form asp-action="GetById" asp-controller="Home" method="get">
+        <div class="form-group">
+            <label for="id">Digite o ID do Equipamento:</label>
+            <input type="number" class="form-control" id="id" name="id" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Buscar</button>
+    </form>
+
+    @if (Model != null)
+    {
+        <h2>Detalhes do Equipamento</h2>
+        <table class="table">
+            <tr><th>ID:</th><td>@Model.Id</td></tr>
+            <tr><th>Nome:</th><td>@Model.Name</td></tr>
+            <tr><th>Instalação:</th><td>@Model.Installation</td></tr>
+            <tr><th>Lote:</th><td>@Model.Batch</td></tr>
+            <tr><th>Operador:</th><td>@Model.Operator</td></tr>
+            <tr><th>Fabricante:</th><td>@Model.Manufacturer</td></tr>
+            <tr><th>Modelo:</th><td>@Model.Model</td></tr>
+            <tr><th>Versão:</th><td>@Model.Version</td></tr>
+            @* <tr><th>Data de Compra:</th><td>@Model.PurchaseDate.ToString("dd/MM/yyyy")</td></tr> *@
+        </table>
+    }
+</div>

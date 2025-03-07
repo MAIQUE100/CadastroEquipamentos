@@ -1,0 +1,92 @@
+﻿@{
+    ViewData["Title"] = "Buscar por ID";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    @using EquipmentManagementAsp.Models;
+}
+
+<div class="container">
+    <h1>Buscar Equipamento por ID</h1>
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger mt-3">
+            @TempData["ErrorMessage"]
+        </div>
+    }
+
+    <form method="get" action="@Url.Action("GetById", "Equipment")">
+        @* <div class="mb-3">
+            <label for="id" class="form-label">Digite o ID do equipamento:</label>
+            <input type="number" class="form-control text-center" id="id" name="id" required>
+        </div> *@
+
+        <div class="mb-3">
+            <label for="id" class="form-label">Digite o ID do Equipamento:</label>
+            <div class="col-6 mx-auto">
+                <input type="number" class="form-control text-center" id="id" name="id" required>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Buscar</button>
+    </form>
+
+    @* @if (!ViewData.ModelState.IsValid)
+    {
+        <div class="alert alert-danger">
+            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+            {
+                <p>@error.ErrorMessage</p>
+            }
+        </div>
+    } *@
+
+    @if (ViewData["Equipment"] != null)
+    {
+        var equipment = ViewData["Equipment"] as Equipment;
+        <div class="container">
+            <h1>Equipamento encontrado</h1>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Codigo</th>
+                        <th>Instalação</th>
+                        <th>Lote</th>
+                        <th>Operador</th>
+                        <th>Fabricante</th>
+                        <th>Modelo</th>
+                        <th>Versão</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>@equipment.Id</td>
+                        <td>@equipment.Installation</td>
+                        <td>@equipment.Batch</td>
+                        <td>@equipment.Operator</td>
+                        <td>@equipment.Manufacturer</td>
+                        <td>@equipment.Model</td>
+                        <td>@equipment.Version</td>
+                        <td>
+                            <a href="@Url.Action("Edit", "Equipment", new { id = equipment.Id })" class="btn btn-warning">Editar</a>
+                            <a href="@Url.Action("Delete", "Equipment", new { id = equipment.Id })" class="btn btn-danger">Excluir</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+       @*  var equipment = ViewData["Equipment"] as Equipment;
+        <div class="mt-4">
+            <h3>Resultado:</h3>
+            <p>ID: @equipment.Id</p>
+            <p>Instalação: @equipment.Installation</p>
+            <p>Lote: @equipment.Batch</p>
+            <p>Operador: @equipment.Operator</p>
+            <p>Fabricante: @equipment.Manufacturer</p>
+            <p>Modelo: @equipment.Model</p>
+            <p>Versão: @equipment.Version</p>
+        </div> *@
+    }
+</div>

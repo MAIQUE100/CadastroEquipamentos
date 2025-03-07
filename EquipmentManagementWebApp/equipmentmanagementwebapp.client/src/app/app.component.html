@@ -1,0 +1,20 @@
+<h1 id="tableLabel">Equipment Management</h1>
+
+
+<div *ngIf="loading">Carregando...</div>
+<div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+
+<div *ngIf="!loading && !errorMessage">
+  <app-equipment-list></app-equipment-list>
+  <ul>
+    <li *ngFor="let equipment of equipmentList">
+      {{ equipment.name }} - {{ equipment.version }}
+
+
+    </li>
+  </ul>
+</div>
+
+
+<!--<h1>{{ title }}</h1>-->
